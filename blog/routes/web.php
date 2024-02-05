@@ -13,5 +13,9 @@ Route::get('/article',[BlogController::class, 'article']);
 Route::get('/contact',[BlogController::class, 'contact']);
 Route::post('/contact',[BlogController::class, 'contactForm']);
 
+use App\Http\Controllers\TaskController ;
+
+Route::get('/tasks', [TaskController::class, 'index'])->name('task.index');
+
 
 //https://startbootstrap.com/theme/clean-blog
