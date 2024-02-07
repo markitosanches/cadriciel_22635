@@ -16,7 +16,7 @@ class TaskController extends Controller
     {   
         //select * from tasks; 
         $tasks = Task::all();
-        return $tasks;
+        return view('task.index', ["tasks" => $tasks]);
     }
 
     /**
@@ -49,7 +49,7 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         //$task =  select * from table where id = $task
-        return $task;
+        return view('task.show', ['task' => $task]);
     }
 
     /**
