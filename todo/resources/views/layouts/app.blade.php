@@ -10,7 +10,7 @@
 <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
+                <a class="navbar-brand" href="/">{{ config('app.name') }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 aria-expanded="false">Tasks</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">New Task</a></li>
+                                <li><a class="dropdown-item" href="{{route('task.create')}}">New Task</a></li>
                                 <li><a class="dropdown-item" href="#">Completed</a></li>
                                 <li><a class="dropdown-item" href="#">Unfinished</a></li>
                             </ul>
@@ -51,7 +51,13 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container my-5">
+        @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+             {{ session('success')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         @yield('content')
     </div>
     <footer class="footer mt-auto py-2 bg-dark text-white">
