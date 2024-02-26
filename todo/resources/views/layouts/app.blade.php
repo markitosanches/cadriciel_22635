@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} - @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
             <div class="container-fluid">
@@ -22,7 +22,7 @@
                             <a class="nav-link active" aria-current="page" href="{{ route('task.index')}}">Tasks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">User</a>
+                            <a class="nav-link" href="{{ route('user.index')}}">User</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
@@ -60,7 +60,7 @@
         @endif
         @yield('content')
     </div>
-    <footer class="footer mt-auto py-2 bg-dark text-white">
+    <footer class="footer mt-auto py-3 bg-dark text-white ">
         <div class="container text-center">
             &copy; {{ date('Y')}} {{config('app.name') }}. All Rights Reserved
         </div>
