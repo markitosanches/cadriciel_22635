@@ -21,8 +21,14 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ route('task.index')}}">Tasks</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('user.index')}}">User</a>
+                        @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="false">Users</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('user.create')}}">New User</a></li>
+                                <li><a class="dropdown-item" href="{{route('user.index')}}">Users</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
@@ -33,6 +39,7 @@
                                 <li><a class="dropdown-item" href="{{route('task.completed', 0)}}">Unfinished</a></li>
                             </ul>
                         </li>
+                        @endauth
                     </ul>
                     <ul class="navbar-nav  mb-2 mb-sm-0">
                         <li class="nav-item dropdown">
@@ -44,7 +51,11 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Logout</a>
+                            @guest
+                                <a class="nav-link" href="{{route('login')}}">Login</a>
+                            @else
+                                <a class="nav-link" href="{{route('logout')}}"">Logout</a>
+                            @endguest
                         </li>
                     </ul>
                 </div>
@@ -52,6 +63,12 @@
         </nav>
     </header>
     <div class="container my-5">
+        @auth 
+            Welcome {{ Auth::user()->name }}!
+        @else
+            Please log in to continue!
+        @endauth
+
         @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
              {{ session('success')}}

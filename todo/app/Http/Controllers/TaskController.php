@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +19,9 @@ class TaskController extends Controller
      */
     public function index()
     {   
+        // if(!Auth::check()){
+        //     return redirect(route('login'));
+        // }
         //select * from tasks; 
         $tasks = Task::all();
 
@@ -52,7 +59,7 @@ class TaskController extends Controller
             'due_date' => 'nullable|date',
         ]);
 
-        //redirect()->back()->with('errors', [])->inputs([]);
+        //redirect()->back()->with('errors', [])->input([]);
 
         //return $request;
          // insert into tasks ([]) values ([]);   
@@ -62,7 +69,7 @@ class TaskController extends Controller
             'description' => $request->description,
             'completed' => $request->input('completed', false),
             'due_date' => $request->due_date,
-            'user_id' => 1
+            'user_id' =>  Auth::user()->id
         ]);
 
         return  redirect()->route('task.show', $task->id)->with('success', 'Task created successfully!');

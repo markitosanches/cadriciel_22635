@@ -16,12 +16,16 @@
                         <li><strong>Author: </strong>{{ $task->user->name}}</li>
                     </ul>
                 </div>
+                
                 <div class="card-footer d-flex justify-content-between">
+                @auth
                     <a href="{{ route('task.edit', $task->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
                     <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                         Delete
                     </button>
-                </div> 
+                @endauth
+                </div>
+                
             </div>
         </div>
     </div>
