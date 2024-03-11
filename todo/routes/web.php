@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SetLocaleController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/users',[UserController::class, 'index'])->name('user.index');
     Route::get('/registration',[UserController::class, 'create'])->name('user.create');
     Route::post('/registration',[UserController::class, 'store'])->name('user.store');
+
+    Route::get('/create/category', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/create/category', [CategoryController::class, 'store'])->name('category.store');
 });
 
 
