@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function(){
     Route::put('/edit/task/{task}', [TaskController::class, 'update'])->name('task.update');
     Route::delete('/task/{task}', [TaskController::class, 'destroy'])->name('task.delete');
     Route::get('/completed/task/{completed}', [TaskController::class, 'completed'])->name('task.completed');
+    Route::get('/task-pdf/{task}', [TaskController::class, 'pdf'])->name('task.pdf');
 
     Route::get('/users',[UserController::class, 'index'])->name('user.index');
     Route::get('/registration',[UserController::class, 'create'])->name('user.create');
